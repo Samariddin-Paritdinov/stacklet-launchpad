@@ -65,6 +65,8 @@ The brief asks for Vercel, but if Vercel signup is blocked this repo includes a 
 netlify deploy --build --prod
 ```
 
+Netlify uses `npm run build:netlify`, which builds the single landing page as a plain static Vite app from `index.html`.
+
 Set the same environment variables in Netlify before testing the waitlist form:
 
 ```bash
