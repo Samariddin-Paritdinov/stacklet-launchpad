@@ -107,4 +107,4 @@ netlify env:set VITE_SUPABASE_ANON_KEY "your-anon-public-key"
 
 ## Loom
 
-Pending.
+https://www.loom.com/share/dbf86f39dcbd4c2c8efdff34cbbf72eb
