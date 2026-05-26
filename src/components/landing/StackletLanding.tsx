@@ -194,32 +194,32 @@ const FEATURES = [
   {
     icon: Workflow,
     title: "Workflow-first builder",
-    body: "Model approval chains, handoffs, and SLAs as the unit of work — not pages glued to queries.",
+    body: "Start from the steps your team actually runs — request, review, approve, notify — instead of dragging tables onto a blank canvas.",
   },
   {
     icon: Database,
     title: "Postgres-ready data",
-    body: "Read and write directly against your Supabase or Postgres schema. No ETL, no shadow copy.",
+    body: "Reads and writes go straight to your Supabase or Postgres. No CSV exports, no Airtable sync, no second source of truth to reconcile.",
   },
   {
     icon: ShieldCheck,
     title: "Guarded permissions",
-    body: "Row-level access tied to roles your team already uses. Every action is auditable by default.",
+    body: "Admins pick which tables and actions an ops builder can touch. Operators ship tools; they can't drop a production table by accident.",
   },
   {
     icon: GitBranch,
     title: "Approval lanes",
-    body: "Branch on amount, region, or customer tier. Escalate cleanly without rebuilding the tool.",
+    body: "Route refunds over $1k to finance, plan downgrades to a CSM, access requests to a manager — without rebuilding the tool each time.",
   },
   {
     icon: LayoutGrid,
-    title: "Reusable ops templates",
-    body: "Refunds, account admin, plan changes, access reviews — start from a working pattern, not a blank canvas.",
+    title: "Ops-first templates",
+    body: "Refunds, account admin, plan changes, access reviews, churn saves — start from a workflow your peers already ship, not a blank page.",
   },
   {
     icon: LineChart,
     title: "Predictable rollout",
-    body: "Staging workspaces, versioned workflows, and one-click rollback so ops changes don't surprise the team.",
+    body: "Test changes in a staging workspace, version every workflow, roll back in one click. Ops changes stop being a Friday-afternoon risk.",
   },
 ];
 
@@ -232,11 +232,12 @@ function Features() {
             Built for ops
           </div>
           <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-            Tools shaped like the work, not the database.
+            Built for the workflow, not the database table.
           </h2>
           <p className="mt-3 text-base text-slate-600">
-            Stacklet starts from the workflow your team already runs in spreadsheets and Slack,
-            then wires it into the data you already have.
+            Stacklet replaces the spreadsheet-plus-Slack-plus-Airtable stack ops teams glue
+            together while waiting on engineering. Same data, same approvers — just an actual
+            tool around it.
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 sm:grid-cols-2 lg:grid-cols-3">
@@ -306,9 +307,9 @@ function Pricing({ onJoin }: { onJoin: () => void }) {
             Priced per workspace, not per seat.
           </h2>
           <p className="mt-3 text-base text-slate-600">
-            Ops tools get used by the whole company — accountants who approve a refund once a
-            month, support leads checking a queue, a CSM reading an account. You shouldn't have to
-            ration that.
+            Retool and Airtable Interfaces bill per editor and per viewer, so the cost grows
+            every time an internal tool actually gets used. Stacklet charges one flat price per
+            workspace, with unlimited builders and reviewers inside it.
           </p>
         </div>
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -391,24 +392,24 @@ function Pricing({ onJoin }: { onJoin: () => void }) {
 
 const FAQS = [
   {
-    q: "Why not just use Retool?",
-    a: "Retool is excellent when engineers own the tool. Stacklet is built for the ops lead who owns the workflow. We trade some component-level flexibility for a workflow model, baked-in approval lanes, and pricing that doesn't punish you for adding occasional reviewers. If your team writes a lot of custom JavaScript inside the tool, Retool is still the better fit.",
+    q: "We already evaluated Retool. Why pick Stacklet instead?",
+    a: "Retool wins when an engineer owns the tool and is comfortable writing query JavaScript and custom components. Stacklet is built for the ops lead who owns the workflow and wants to ship it the same afternoon. You get approval lanes, role guardrails, and ops templates out of the box, at roughly a third of Retool's per-developer cost. If your tool needs a custom React component or a complex transformer pipeline, Retool is still the better choice — we're upfront about that.",
   },
   {
-    q: "Can non-technical operators build safely?",
-    a: "Yes — within guardrails an admin sets up front. Builders pick from connected tables, but write access goes through typed actions an engineer or admin has approved. Operators can compose new workflows; they can't quietly run a destructive query against production.",
+    q: "Our ops team isn't technical. Can they actually build something safely?",
+    a: "Yes, and that's the whole point. An admin (usually an engineer or RevOps lead) connects the database once and picks which tables and write actions are in scope. From there, a support or finance lead composes workflows from approved building blocks. They can ship a refund queue or an access-review tool; they cannot run a raw UPDATE against production. Every action is logged with who, what, and when.",
   },
   {
-    q: "Will this replace our database?",
-    a: "No. Stacklet reads and writes against your existing Postgres or Supabase. There is no second source of truth, no sync job, no shadow schema. If you turn Stacklet off tomorrow, your data is exactly where it was.",
+    q: "Is this a new database we have to migrate to? What happens to our Supabase / Postgres?",
+    a: "Stacklet sits on top of your existing Postgres or Supabase — no migration, no ETL, no shadow copy. Workflows read and write directly against your schema with the permissions you grant. If you turn Stacklet off tomorrow, your data is exactly where it was, and the tools you replaced (spreadsheets, Airtable, Zapier handoffs) are the only thing that's gone.",
   },
   {
-    q: "How is pricing different from per-seat tools?",
-    a: "Per-seat pricing makes internal tools expensive precisely when they start working — the moment a finance person, a CSM, or a support manager wants to log in. Stacklet charges per workspace, so usage can grow inside a team without the bill following every login.",
+    q: "Per-seat tools get expensive fast. How is workspace pricing actually different?",
+    a: "Most internal tools charge $10–50 per editor and viewer, which means the moment a CSM, accountant, or support manager logs in, your bill goes up. Stacklet charges per workspace — typically one per team — with unlimited builders and reviewers inside it. A 12-person support org on Team pays $129/mo flat, not $129 times twelve. That's the wedge.",
   },
   {
-    q: "What is missing from the first version?",
-    a: "Honest list: no mobile builder, limited charting (we lean on your BI tool), no marketplace of third-party blocks yet, and no on-prem deployment. We support Postgres and Supabase today; MySQL and Snowflake are on the roadmap, not shipped.",
+    q: "You're early. What's honestly not in v1 yet?",
+    a: "No mobile builder (tools render fine on mobile, but you build on desktop). Charting is intentionally light — we expect you to keep Metabase or Looker for dashboards. No marketplace of third-party blocks yet, and no on-prem or VPC deployment. Postgres and Supabase are supported today; MySQL and Snowflake are on the roadmap, not shipped. If any of these are a hard requirement, we'd rather tell you now than after you've ported a workflow.",
   },
 ];
 
@@ -511,11 +512,12 @@ function Waitlist({ formRef }: { formRef: React.RefObject<HTMLDivElement | null>
             Early access
           </div>
           <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-            Get Stacklet before your next eng-queue ticket.
+            Ship your next internal tool this week, not next quarter.
           </h2>
           <p className="mt-3 text-base text-slate-600">
-            We're onboarding ops teams from 50–500 person B2B SaaS companies in waves. Tell us a
-            bit about your team and we'll get you in.
+            We're onboarding ops teams at 50–500 person B2B SaaS companies in weekly waves.
+            Tell us which workflow is currently stuck in a spreadsheet and we'll prioritize
+            your invite.
           </p>
           <ul className="mt-6 space-y-2.5 text-sm text-slate-700">
             {[
@@ -704,14 +706,15 @@ export default function StackletLanding() {
           <div className="lg:col-span-6">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs font-medium text-slate-700 shadow-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              In private beta with 30+ ops teams
+              In private beta with 30+ B2B SaaS ops teams
             </span>
             <h1 className="mt-5 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-[56px] lg:leading-[1.05]">
               Internal tools without the engineering queue.
             </h1>
             <p className="mt-5 max-w-xl text-base text-slate-600 sm:text-lg">
-              Stacklet helps ops teams launch approval flows, admin panels, and workflow trackers
-              on top of Supabase or Postgres — without filing a ticket and waiting two sprints.
+              Stacklet lets your ops team ship a secure approval flow, admin panel, or workflow
+              tracker on top of Supabase or Postgres in an afternoon — instead of running it in a
+              spreadsheet while engineering's queue clears.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <button
