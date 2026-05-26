@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import {
   ArrowRight,
   Boxes,
@@ -461,11 +462,11 @@ function Waitlist({ formRef }: { formRef: React.RefObject<HTMLDivElement | null>
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
   const [cooldown, setCooldown] = useState(false);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    const trimmed = email.trim().toLowerCase();
-    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed);
+    const trimmedEmail = email.trim().toLowerCase();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail);
     if (!valid) {
       setError("Please enter a valid email address.");
       return;
@@ -474,30 +475,32 @@ function Waitlist({ formRef }: { formRef: React.RefObject<HTMLDivElement | null>
       setError("Please pick the role that fits best.");
       return;
     }
+
     setStatus("submitting");
-    // Simulate network + duplicate check via localStorage.
-    setTimeout(() => {
-      try {
-        const key = "stacklet:waitlist";
-        const raw = typeof window !== "undefined" ? window.localStorage.getItem(key) : null;
-        const list: string[] = raw ? JSON.parse(raw) : [];
-        if (list.includes(trimmed)) {
-          setStatus("idle");
-          setError("You're already on the list.");
-          return;
-        }
-        list.push(trimmed);
-        window.localStorage.setItem(key, JSON.stringify(list));
-      } catch {
-        // ignore storage errors
+    const trimmedCompany = company.trim();
+    const { error: insertError } = await supabase.from("waitlist").insert({
+      email: trimmedEmail,
+      role,
+      company: trimmedCompany.length > 0 ? trimmedCompany : null,
+    });
+
+    if (insertError) {
+      setStatus("idle");
+      if (insertError.code === "23505") {
+        setError("You're already on the list.");
+      } else {
+        console.error("Waitlist insert failed:", insertError);
+        setError("Something went wrong on our side. Please try again in a moment.");
       }
-      setStatus("success");
-      setEmail("");
-      setRole("");
-      setCompany("");
-      setCooldown(true);
-      setTimeout(() => setCooldown(false), 3000);
-    }, 400);
+      return;
+    }
+
+    setStatus("success");
+    setEmail("");
+    setRole("");
+    setCompany("");
+    setCooldown(true);
+    setTimeout(() => setCooldown(false), 3000);
   };
 
   return (
