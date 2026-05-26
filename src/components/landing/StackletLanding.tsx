@@ -143,9 +143,7 @@ function ProductPreview() {
                   <tr>
                     <th className="px-3 py-2 text-left font-medium">Customer</th>
                     <th className="px-3 py-2 text-left font-medium">Amount</th>
-                    <th className="hidden px-3 py-2 text-left font-medium md:table-cell">
-                      Reason
-                    </th>
+                    <th className="hidden px-3 py-2 text-left font-medium md:table-cell">Reason</th>
                     <th className="px-3 py-2 text-left font-medium">Stage</th>
                   </tr>
                 </thead>
@@ -236,9 +234,8 @@ function Features() {
             Built for the workflow, not the database table.
           </h2>
           <p className="mt-3 text-base text-slate-600">
-            Stacklet replaces the spreadsheet-plus-Slack-plus-Airtable stack ops teams glue
-            together while waiting on engineering. Same data, same approvers — just an actual
-            tool around it.
+            Stacklet replaces the spreadsheet-plus-Slack-plus-Airtable stack ops teams glue together
+            while waiting on engineering. Same data, same approvers — just an actual tool around it.
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 sm:grid-cols-2 lg:grid-cols-3">
@@ -308,9 +305,9 @@ function Pricing({ onJoin }: { onJoin: () => void }) {
             Priced per workspace, not per seat.
           </h2>
           <p className="mt-3 text-base text-slate-600">
-            Retool and Airtable Interfaces bill per editor and per viewer, so the cost grows
-            every time an internal tool actually gets used. Stacklet charges one flat price per
-            workspace, with unlimited builders and reviewers inside it.
+            Retool and Airtable Interfaces bill per editor and per viewer, so the cost grows every
+            time an internal tool actually gets used. Stacklet charges one flat price per workspace,
+            with unlimited builders and reviewers inside it.
           </p>
         </div>
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -339,18 +336,12 @@ function Pricing({ onJoin }: { onJoin: () => void }) {
                     {p.name}
                   </h3>
                 </div>
-                <p
-                  className={`mt-1 text-sm ${
-                    highlighted ? "text-slate-300" : "text-slate-600"
-                  }`}
-                >
+                <p className={`mt-1 text-sm ${highlighted ? "text-slate-300" : "text-slate-600"}`}>
                   {p.tagline}
                 </p>
                 <div className="mt-6 flex items-baseline gap-1">
                   <span className="text-4xl font-semibold tracking-tight">${p.price}</span>
-                  <span
-                    className={`text-sm ${highlighted ? "text-slate-400" : "text-slate-500"}`}
-                  >
+                  <span className={`text-sm ${highlighted ? "text-slate-400" : "text-slate-500"}`}>
                     /mo per workspace
                   </span>
                 </div>
@@ -478,16 +469,28 @@ function Waitlist({ formRef }: { formRef: React.RefObject<HTMLDivElement | null>
 
     setStatus("submitting");
     const trimmedCompany = company.trim();
-    const { error: insertError } = await supabase.from("waitlist").insert({
-      email: trimmedEmail,
-      role,
-      company: trimmedCompany.length > 0 ? trimmedCompany : null,
-    });
+    let insertError: { code?: string; message?: string } | null = null;
+
+    try {
+      const result = await supabase.from("waitlist").insert({
+        email: trimmedEmail,
+        role,
+        company: trimmedCompany.length > 0 ? trimmedCompany : null,
+      });
+      insertError = result.error;
+    } catch (err) {
+      insertError =
+        err instanceof Error ? { message: err.message } : { message: "Unknown Supabase error" };
+    }
 
     if (insertError) {
       setStatus("idle");
       if (insertError.code === "23505") {
         setError("You're already on the list.");
+      } else if (insertError.message?.includes("Missing Supabase environment")) {
+        setError(
+          "Supabase is not connected yet. Add the project URL and anon key, then try again.",
+        );
       } else {
         console.error("Waitlist insert failed:", insertError);
         setError("Something went wrong on our side. Please try again in a moment.");
@@ -518,9 +521,8 @@ function Waitlist({ formRef }: { formRef: React.RefObject<HTMLDivElement | null>
             Ship your next internal tool this week, not next quarter.
           </h2>
           <p className="mt-3 text-base text-slate-600">
-            We're onboarding ops teams at 50–500 person B2B SaaS companies in weekly waves.
-            Tell us which workflow is currently stuck in a spreadsheet and we'll prioritize
-            your invite.
+            We're onboarding ops teams at 50–500 person B2B SaaS companies in weekly waves. Tell us
+            which workflow is currently stuck in a spreadsheet and we'll prioritize your invite.
           </p>
           <ul className="mt-6 space-y-2.5 text-sm text-slate-700">
             {[
@@ -620,11 +622,7 @@ function Waitlist({ formRef }: { formRef: React.RefObject<HTMLDivElement | null>
               disabled={status === "submitting" || cooldown}
               className="inline-flex h-10 w-full items-center justify-center gap-1.5 rounded-md bg-slate-900 px-4 text-sm font-medium text-white shadow-sm transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {status === "submitting"
-                ? "Adding you…"
-                : cooldown
-                  ? "Added"
-                  : "Join the waitlist"}
+              {status === "submitting" ? "Adding you…" : cooldown ? "Added" : "Join the waitlist"}
               {status !== "submitting" && !cooldown && <ArrowRight className="h-3.5 w-3.5" />}
             </button>
             <p className="text-xs text-slate-500">
