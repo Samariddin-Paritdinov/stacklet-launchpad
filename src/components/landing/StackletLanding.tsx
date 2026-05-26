@@ -192,6 +192,11 @@ function ProductPreview() {
 
 const FEATURES = [
   {
+    icon: Workflow,
+    title: "Workflow-first builder",
+    body: "Start from the steps your team actually runs — request, review, approve, notify — instead of dragging tables onto a blank canvas.",
+  },
+  {
     icon: Database,
     title: "Postgres-ready data",
     body: "Reads and writes go straight to your Supabase or Postgres. No CSV exports, no Airtable sync, no second source of truth to reconcile.",
