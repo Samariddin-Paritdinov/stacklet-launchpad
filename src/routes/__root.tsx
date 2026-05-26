@@ -72,11 +72,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Stacklet — Internal tools without the engineering queue" },
+      {
+        name: "description",
+        content:
+          "Stacklet lets ops teams ship approval flows, admin panels, and workflow trackers on top of Postgres or Supabase — without waiting on engineering.",
+      },
+      { name: "author", content: "Stacklet" },
+      { property: "og:title", content: "Stacklet — Internal tools without the engineering queue" },
+      {
+        property: "og:description",
+        content:
+          "Workflow-first internal tools for RevOps, support ops, and finance ops. Workspace-based pricing, no per-seat tax.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
