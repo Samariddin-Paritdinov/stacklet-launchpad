@@ -391,24 +391,24 @@ function Pricing({ onJoin }: { onJoin: () => void }) {
 
 const FAQS = [
   {
-    q: "Why not just use Retool?",
-    a: "Retool is excellent when engineers own the tool. Stacklet is built for the ops lead who owns the workflow. We trade some component-level flexibility for a workflow model, baked-in approval lanes, and pricing that doesn't punish you for adding occasional reviewers. If your team writes a lot of custom JavaScript inside the tool, Retool is still the better fit.",
+    q: "We already evaluated Retool. Why pick Stacklet instead?",
+    a: "Retool wins when an engineer owns the tool and is comfortable writing query JavaScript and custom components. Stacklet is built for the ops lead who owns the workflow and wants to ship it the same afternoon. You get approval lanes, role guardrails, and ops templates out of the box, at roughly a third of Retool's per-developer cost. If your tool needs a custom React component or a complex transformer pipeline, Retool is still the better choice — we're upfront about that.",
   },
   {
-    q: "Can non-technical operators build safely?",
-    a: "Yes — within guardrails an admin sets up front. Builders pick from connected tables, but write access goes through typed actions an engineer or admin has approved. Operators can compose new workflows; they can't quietly run a destructive query against production.",
+    q: "Our ops team isn't technical. Can they actually build something safely?",
+    a: "Yes, and that's the whole point. An admin (usually an engineer or RevOps lead) connects the database once and picks which tables and write actions are in scope. From there, a support or finance lead composes workflows from approved building blocks. They can ship a refund queue or an access-review tool; they cannot run a raw UPDATE against production. Every action is logged with who, what, and when.",
   },
   {
-    q: "Will this replace our database?",
-    a: "No. Stacklet reads and writes against your existing Postgres or Supabase. There is no second source of truth, no sync job, no shadow schema. If you turn Stacklet off tomorrow, your data is exactly where it was.",
+    q: "Is this a new database we have to migrate to? What happens to our Supabase / Postgres?",
+    a: "Stacklet sits on top of your existing Postgres or Supabase — no migration, no ETL, no shadow copy. Workflows read and write directly against your schema with the permissions you grant. If you turn Stacklet off tomorrow, your data is exactly where it was, and the tools you replaced (spreadsheets, Airtable, Zapier handoffs) are the only thing that's gone.",
   },
   {
-    q: "How is pricing different from per-seat tools?",
-    a: "Per-seat pricing makes internal tools expensive precisely when they start working — the moment a finance person, a CSM, or a support manager wants to log in. Stacklet charges per workspace, so usage can grow inside a team without the bill following every login.",
+    q: "Per-seat tools get expensive fast. How is workspace pricing actually different?",
+    a: "Most internal tools charge $10–50 per editor and viewer, which means the moment a CSM, accountant, or support manager logs in, your bill goes up. Stacklet charges per workspace — typically one per team — with unlimited builders and reviewers inside it. A 12-person support org on Team pays $129/mo flat, not $129 times twelve. That's the wedge.",
   },
   {
-    q: "What is missing from the first version?",
-    a: "Honest list: no mobile builder, limited charting (we lean on your BI tool), no marketplace of third-party blocks yet, and no on-prem deployment. We support Postgres and Supabase today; MySQL and Snowflake are on the roadmap, not shipped.",
+    q: "You're early. What's honestly not in v1 yet?",
+    a: "No mobile builder (tools render fine on mobile, but you build on desktop). Charting is intentionally light — we expect you to keep Metabase or Looker for dashboards. No marketplace of third-party blocks yet, and no on-prem or VPC deployment. Postgres and Supabase are supported today; MySQL and Snowflake are on the roadmap, not shipped. If any of these are a hard requirement, we'd rather tell you now than after you've ported a workflow.",
   },
 ];
 
