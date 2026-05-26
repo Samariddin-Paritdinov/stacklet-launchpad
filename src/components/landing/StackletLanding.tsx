@@ -194,32 +194,32 @@ const FEATURES = [
   {
     icon: Workflow,
     title: "Workflow-first builder",
-    body: "Model approval chains, handoffs, and SLAs as the unit of work — not pages glued to queries.",
+    body: "Start from the steps your team actually runs — request, review, approve, notify — instead of dragging tables onto a blank canvas.",
   },
   {
     icon: Database,
     title: "Postgres-ready data",
-    body: "Read and write directly against your Supabase or Postgres schema. No ETL, no shadow copy.",
+    body: "Reads and writes go straight to your Supabase or Postgres. No CSV exports, no Airtable sync, no second source of truth to reconcile.",
   },
   {
     icon: ShieldCheck,
     title: "Guarded permissions",
-    body: "Row-level access tied to roles your team already uses. Every action is auditable by default.",
+    body: "Admins pick which tables and actions an ops builder can touch. Operators ship tools; they can't drop a production table by accident.",
   },
   {
     icon: GitBranch,
     title: "Approval lanes",
-    body: "Branch on amount, region, or customer tier. Escalate cleanly without rebuilding the tool.",
+    body: "Route refunds over $1k to finance, plan downgrades to a CSM, access requests to a manager — without rebuilding the tool each time.",
   },
   {
     icon: LayoutGrid,
-    title: "Reusable ops templates",
-    body: "Refunds, account admin, plan changes, access reviews — start from a working pattern, not a blank canvas.",
+    title: "Ops-first templates",
+    body: "Refunds, account admin, plan changes, access reviews, churn saves — start from a workflow your peers already ship, not a blank page.",
   },
   {
     icon: LineChart,
     title: "Predictable rollout",
-    body: "Staging workspaces, versioned workflows, and one-click rollback so ops changes don't surprise the team.",
+    body: "Test changes in a staging workspace, version every workflow, roll back in one click. Ops changes stop being a Friday-afternoon risk.",
   },
 ];
 
