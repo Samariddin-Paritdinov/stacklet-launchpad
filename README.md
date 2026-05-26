@@ -90,8 +90,6 @@ netlify env:set VITE_SUPABASE_ANON_KEY "your-anon-public-key"
 
 ## Known Issues / Next
 
-- Add a final live URL after deployment.
-- Add the required 60-90 second Loom demo link.
 - Export or paste the full Lovable chat transcript into `docs/prompts/` if Lovable's export tool becomes available again.
 - If submitting Netlify instead of Vercel, disclose the Vercel signup blocker.
 
