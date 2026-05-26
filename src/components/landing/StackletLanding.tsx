@@ -232,11 +232,12 @@ function Features() {
             Built for ops
           </div>
           <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-            Tools shaped like the work, not the database.
+            Built for the workflow, not the database table.
           </h2>
           <p className="mt-3 text-base text-slate-600">
-            Stacklet starts from the workflow your team already runs in spreadsheets and Slack,
-            then wires it into the data you already have.
+            Stacklet replaces the spreadsheet-plus-Slack-plus-Airtable stack ops teams glue
+            together while waiting on engineering. Same data, same approvers — just an actual
+            tool around it.
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 sm:grid-cols-2 lg:grid-cols-3">
@@ -306,9 +307,9 @@ function Pricing({ onJoin }: { onJoin: () => void }) {
             Priced per workspace, not per seat.
           </h2>
           <p className="mt-3 text-base text-slate-600">
-            Ops tools get used by the whole company — accountants who approve a refund once a
-            month, support leads checking a queue, a CSM reading an account. You shouldn't have to
-            ration that.
+            Retool and Airtable Interfaces bill per editor and per viewer, so the cost grows
+            every time an internal tool actually gets used. Stacklet charges one flat price per
+            workspace, with unlimited builders and reviewers inside it.
           </p>
         </div>
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -511,11 +512,12 @@ function Waitlist({ formRef }: { formRef: React.RefObject<HTMLDivElement | null>
             Early access
           </div>
           <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-            Get Stacklet before your next eng-queue ticket.
+            Ship your next internal tool this week, not next quarter.
           </h2>
           <p className="mt-3 text-base text-slate-600">
-            We're onboarding ops teams from 50–500 person B2B SaaS companies in waves. Tell us a
-            bit about your team and we'll get you in.
+            We're onboarding ops teams at 50–500 person B2B SaaS companies in weekly waves.
+            Tell us which workflow is currently stuck in a spreadsheet and we'll prioritize
+            your invite.
           </p>
           <ul className="mt-6 space-y-2.5 text-sm text-slate-700">
             {[
