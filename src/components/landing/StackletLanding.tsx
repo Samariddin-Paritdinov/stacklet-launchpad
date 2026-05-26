@@ -704,14 +704,15 @@ export default function StackletLanding() {
           <div className="lg:col-span-6">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs font-medium text-slate-700 shadow-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              In private beta with 30+ ops teams
+              In private beta with 30+ B2B SaaS ops teams
             </span>
             <h1 className="mt-5 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-[56px] lg:leading-[1.05]">
               Internal tools without the engineering queue.
             </h1>
             <p className="mt-5 max-w-xl text-base text-slate-600 sm:text-lg">
-              Stacklet helps ops teams launch approval flows, admin panels, and workflow trackers
-              on top of Supabase or Postgres — without filing a ticket and waiting two sprints.
+              Stacklet lets your ops team ship a secure approval flow, admin panel, or workflow
+              tracker on top of Supabase or Postgres in an afternoon — instead of running it in a
+              spreadsheet while engineering's queue clears.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <button
