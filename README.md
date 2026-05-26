@@ -86,7 +86,7 @@ netlify env:set VITE_SUPABASE_ANON_KEY "your-anon-public-key"
 - ✅ Supabase migration for anon insert-only waitlist rows.
 - 🚧 Live Supabase row verification requires project env vars to be configured in the deploy host.
 - 🚧 Netlify fallback is configured because Vercel signup is blocked.
-- ❌ Loom demo link still needs to be recorded and added.
+- ✅ Loom demo link recorded and added.
 
 ## Known Issues / Next
 
